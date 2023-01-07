@@ -1,0 +1,166 @@
+{% extends './dash-base.html' %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="iziToast-wrapper iziToast-wrapper-topRight"><div class="iziToast-capsule" style="height: auto;"><div data-izitoast-ref="1664957825666" class="iziToast iziToast-theme-light iziToast-color-blue iziToast-animateInside iziToast-opened iziToast-paused" id="SGVsbG8lMkMlMjB3b3JsZCFUaGlzJTIwYXdlc29tZSUyMHBsdWdpbiUyMGlzJTIwbWFkZSUyMGl6aVRvYXN0JTIwdG9hc3RyYmx1ZQ"><div class="iziToast-body" style="padding-left: 33px;"><i class="iziToast-icon ico-info revealIn"></i><div class="iziToast-texts"><strong class="iziToast-title slideIn" style="margin-right: 10px;"></strong><p class="iziToast-message slideIn">{{message}}</p></div><div></div></div><button type="button" class="iziToast-close"></button><div class="iziToast-progressbar"><div style="transition: none 0s ease 0s; width: 308.95px;"></div></div></div></div></div>
+
+{% endfor %}
+{% endif %}
+
+<div class="main-content">
+  <div class="card">
+  
+    <form class="needs-validation" novalidate="" method="POST">
+      {% csrf_token %}
+      <div class="card-header">
+        <h4>Add Patient Personal Information</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="form-group col-4">
+            <label>Aadhaar Card Number</label>
+            <input type="text" class="form-control purchase-code" placeholder="6262-5322-2245" name="AadhaarId" required="">
+          </div>
+          <div class="form-group col-4">
+            <label>Patient Name</label>
+            <input type="text" class="form-control" required="" name="pname">
+            <div class="invalid-feedback">
+              Please enter Patient's name
+            </div>
+          </div>
+          <div class="form-group col-4">
+            <label>Phone Number</label>
+            <input type="text" class="form-control phone-number" required="" name="phone">
+          </div>
+        </div>
+
+
+        <div class="row">
+
+          <div class="form-group  col-4">
+            <label>DOB</label>
+            <input type="text" class="form-control datepicker" name="dob">
+          </div>
+
+          <div class="form-group col-4">
+            <label>Gender</label>
+            <select class="form-control" name="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group col-4">
+            <label>Category</label>
+            <select class="form-control" name="category">
+              <option value="SC">SC</option>
+              <option value="ST">ST</option>
+              <option value="OBC">OBC</option>
+              <option value="General">General</option>
+            </select>
+          </div>
+
+         
+        </div>
+
+
+
+        <div class="row">
+          <div class="form-group col-4">
+            
+            <label>Blood Group</label>
+
+            <select class="form-control" name="bloodgroup">
+              <option value="A Positive">A Positive</option>
+              <option value="A Negative">A Negative</option>
+              <option value="A Unknown">A Unknown</option>
+              <option value="B Positive">B Positive</option>
+              <option value="B Negative">B Negative</option>
+              <option value="B Unknown">B Unknown</option>
+              <option value="AB Positive">AB Positive</option>
+              <option value="AB Negative">AB Negative</option>
+              <option value="AB Unknown">AB Unknown</option>
+              <option value="O Positive">O Positive</option>
+              <option value="O Negative">O Negative</option>
+              <option value="O Unknown">O Unknown</option>
+              <option value="Unknown">Unknown</option>
+            </select>
+          </div>
+
+          <div class="form-group col-4">
+            <label>Blood Pressure</label>
+            <input type="text" class="form-control" required="" name="bp">
+           
+          </div>
+
+          <div class="form-group col-4">
+            <label>Diabetes  </label>
+            <input type="text" class="form-control" required="" name="Diabetes">
+          </div>
+
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="form-group col-4">
+            <label>Colestrol  </label>
+            <input type="text" class="form-control" required="" name="Colestrol">
+          </div>
+
+          <div class="form-group col-4">
+            <label>Family Doctor  </label>
+            <input type="text" class="form-control" required="" name="fdoc">
+          </div>
+          <div class="form-group col-4">
+            <label>Family Doctor Number </label>
+            <input type="text" class="form-control phone-number" required="" name="fdocnumber">
+          </div>
+
+
+        </div>
+
+        <div class="row">
+        
+          <div class="form-group col-4">
+            <label>Patient Address</label>
+            <textarea class="form-control" required="" name="address"></textarea>
+          </div>
+          <div class="form-group col-4">
+            <label>Allergies </label>
+            <textarea class="form-control" required="" name="Allergies"></textarea>
+          </div>
+          <div class="form-group col-4">
+            <label>Surgery History </label>
+            <textarea class="form-control" required="" name="Surgery"></textarea>
+          </div>
+          
+
+        </div>
+
+      </div>
+      <div class="card-footer text-right">
+        <button class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    var cleavePC = new Cleave('.purchase-code', {
+      delimiter: '-',
+      blocks: [4, 4, 4],
+      numericOnly: true,
+    });
+
+    var cleavePN = new Cleave('.phone-number', {
+      phone: true,
+      phoneRegionCode: 'in'
+    });
+  });
+</script>
+
+{% endblock %}

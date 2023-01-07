@@ -1,0 +1,95 @@
+{% extends './dash-base.html' %}
+
+{% block content %}
+
+<div class="main-content">
+    <div class="card">
+        <div class="card-header">
+          <h4>Personal Data</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            
+            <table class="table table-striped table-hover" id="" style="width:100%;">
+
+              <thead>
+                <tr>
+                  <th>Aadhaar ID</th>
+                  <th>Name</th>
+                  <th>Number</th>
+                  <th>Category</th>
+                  <th>Gender</th>
+                  <th>Data Added By</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for personal in personaldata %}
+                <tr>
+                  <td>{{personal.AadhaarId}}</td>
+                  <td>{{personal.name}}</td>
+                  <td>{{personal.number}}</td>
+                  <td>{{personal.category}}</td>
+                  <td>{{personal.gender}}</td>
+                  <td>{{personal.AddedBy}}</td>
+                  <td><a href="/personaldata/{{personal.AadhaarId}}" class="btn btn-primary">Detail</a></td>
+                </tr>
+                 
+                {% endfor %}
+                
+                
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h4>Disease Data</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            
+            <table class="table table-striped table-hover" id="" style="width:100%;">
+
+              <thead>
+                
+                <tr>
+ 
+                  <th>Name</th>
+                  
+                  <th>Disease Type</th>
+                  <th>Report DateTime</th>
+                  <th>Drugs Prescribed</th>
+                  <th>Data Added By</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for disease in diseasedata %}
+                <tr>
+                  
+                  <td>{{disease.PatientName}}</td>
+                  
+                  <td>{{disease.DiseaseType}}</td>
+                  <td>{{disease.ReportDateTime}}</td>
+                  <td>{{disease.DrugsPrescribed}}</td>
+                  <td>{{disease.AddedBy}}</td>
+                  <td><a href="/diseasedata/{{disease.AadhaarId}}"  class="btn btn-primary">Detail</a></td>
+                </tr>
+                 
+                {% endfor %}
+                
+                
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+</div>
+
+ 
+
+{% endblock %}

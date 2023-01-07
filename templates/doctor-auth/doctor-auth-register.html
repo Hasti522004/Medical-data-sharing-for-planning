@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="loader"></div>
+  <div id="app">
+    <section class="section">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+            <div class="card card-primary">
+
+              <div class="card-header">
+                <h4>Doctor Regitration</h4>
+              </div>
+              <div class="card-body">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible show fade">
+                  <div class="alert-body">
+                    <button class="close" data-dismiss="alert">
+                      <span>&times;</span>
+                    </button>
+                    {{ message }}
+                  </div>
+                </div>
+               
+                {% endfor %}
+              {% endif %}
+
+                <form method="POST" class="needs-validation" novalidate="" >
+                    {% csrf_token %}
+                  <div class="row">
+                    
+                    <div class="form-group col-6">
+                      <label >Name</label>
+                      <input id="last_name" type="text" class="form-control" name="doctorname" tabindex="1" required >
+                      <div class="invalid-feedback">
+                        Please fill in your email
+                      </div>
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="email">Email</label>
+                      <input id="email" type="email" class="form-control" name="email" tabindex="2" required >
+                      <div class="invalid-feedback">
+                      </div>
+                  </div>
+                  </div>
+
+                  <div class="row">
+                    
+                    <div class="form-group col-6">
+                      <label>Contact Number</label>
+                      <input type="text" class="form-control" name="number" tabindex="3" required >
+                    </div>
+                    <div class="form-group col-6">
+                      <label>Gender</label>
+                      <select class="form-control" name="gender" tabindex="7" required >
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                     
+                      </select>
+                  </div>
+                  </div>
+
+                  <div class="row">
+                    
+                   
+                    <div class="form-group col-6">
+                      <label for="name" class="d-block">Education </label>
+                      <input id="name" type="text" class="form-control" name="education" tabindex="4" required >
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="password" class="d-block">Password</label>
+                      <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator"
+                        name="password" tabindex="5" required >
+                      <div id="pwindicator" class="pwindicator">
+                        <div class="bar"></div>
+                        <div class="label"></div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                  <div class="row">
+                    <div class="form-group col-12">
+                      <label>Address</label>
+                      <textarea class="form-control "  name="address" tabindex="6" required ></textarea>
+                  </div>
+                    
+                  </div>
+                   
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                      Register
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="mb-4 text-muted text-center">
+                Already Registered? <a href="/doctor-login">Login</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  {% endblock %}

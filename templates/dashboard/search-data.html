@@ -1,0 +1,55 @@
+{% extends './dash-base.html' %}
+
+{% block content %}
+
+<div class="main-content">
+    <div class="card">
+        <form class="needs-validation" novalidate="" method="post">
+            {% csrf_token %}
+            <div class="card-header">
+                <h4>Search Patient Data</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="form-group col-11">
+                        <label>Enter Aadhaar Card Number</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control  purchase-code" placeholder="6262-5322-2245"
+                                name="AadhaarId" required="" aria-label="">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+
+
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        var cleavePC = new Cleave('.purchase-code', {
+            delimiter: '-',
+            blocks: [4, 4, 4],
+            numericOnly: true,
+        });
+
+        var cleavePN = new Cleave('.phone-number', {
+            phone: true,
+            phoneRegionCode: 'in'
+        });
+    });
+</script>
+
+{% endblock %}
