@@ -45,5 +45,5 @@ The Easy-Medi Healthcare Portal provides:
 <img width="958" alt="Health_Card" src="https://github.com/Hasti522004/Medical-data-sharing-for-planning/assets/93071222/426b0e94-a588-4da0-8afb-c304edcec6a7">
 
 
-
+## Thank You!
 
